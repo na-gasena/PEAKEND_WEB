@@ -6,6 +6,8 @@
   --textureOpacity: 0.35; /* medium */
   --ink: rgba(20, 20, 20, 0.92);
   --shadowLight: rgba(255, 255, 255, 0.65);
+  --mincho: "Shippori Mincho B1", "Shippori Mincho", "Hiragino Mincho ProN",
+    "Yu Mincho", "MS Mincho", serif;
 }
 
 * {
@@ -185,6 +187,7 @@ img {
   text-align: center;
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  font-family: var(--mincho);
   opacity: 0;
   transform-origin: center;
   transition: opacity 0.8s ease;

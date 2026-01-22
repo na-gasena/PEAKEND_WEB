@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEAK END - 映画告知</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- ロード画面（スプラッシュ） -->
+    <div id="splash" aria-label="loading">
+      <img class="splashLogo" src="./assets/Logo.png" alt="PEAK END" />
+    </div>
+
+    <!-- メイン画面 -->
+    <main id="app" aria-label="main">
+      <!-- 背景動画 -->
+      <video
+        id="bgVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="./assets/BackPlayVideo.mp4" type="video/mp4" />
+      </video>
+
+      <!-- 黄色オーバーレイ（視認性向上） -->
+      <div id="videoOverlay" aria-hidden="true"></div>
+
+      <!-- 前面コンテンツ -->
+      <div id="content">
+        <header class="top">
+          <img class="logo" src="./assets/Logo.png" alt="PEAK END ロゴ" />
+        </header>
+
+        <section class="center" aria-label="key-visual">
+          <img class="keyVisual" src="./assets/SolaRin_Only.png" alt="" />
+        </section>
+
+        <footer class="bottom">
+          <p class="releaseDate">20XX年 X月 公開</p>
+        </footer>
+      </div>
+    </main>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>

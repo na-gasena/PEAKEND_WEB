@@ -2,6 +2,7 @@
 :root {
   --yellow: #ffd700;
   --overlayYellow: rgba(255, 215, 0, 0.32);
+  --textureOpacity: 0.35; /* medium */
   --ink: rgba(20, 20, 20, 0.92);
   --shadowLight: rgba(255, 255, 255, 0.65);
 }
@@ -92,6 +93,17 @@ img {
   z-index: -1;
 }
 
+/* Texture overlay (background-only) */
+#videoOverlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/texture.png");
+  background-repeat: repeat;
+  opacity: var(--textureOpacity);
+  pointer-events: none;
+}
+
 /* Foreground content */
 #content {
   position: relative;
@@ -111,6 +123,19 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.bottom {
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.releaseBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .logo {
@@ -140,6 +165,45 @@ img {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  text-align: center;
+}
+
+.snsLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.snsLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.snsLink img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px var(--shadowLight));
+}
+
+.snsLink:hover {
+  transform: translateY(-1px);
+}
+
+.snsLink:focus-visible {
+  outline: 2px solid rgba(20, 20, 20, 0.75);
+  outline-offset: 3px;
 }
 
 /* Step-in animations */
@@ -154,6 +218,11 @@ img {
 }
 
 .releaseDate.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.snsLinks.isVisible {
   opacity: 1;
   transform: translateY(0);
 }

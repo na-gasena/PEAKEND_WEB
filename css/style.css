@@ -163,6 +163,13 @@ img {
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+/* Make header logo larger on wide screens */
+@media (min-width: 900px) {
+  .logo {
+    width: min(520px, 36vw);
+  }
+}
+
 .keyVisual {
   width: min(760px, 92vw);
   max-height: 62vh;
@@ -181,13 +188,18 @@ img {
 
 .keyText {
   position: absolute;
-  left: 50%;
   bottom: clamp(16px, 8vh, 72px);
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
   font-family: var(--mincho);
+  /* use horizontal space to avoid odd wraps */
+  padding-inline: clamp(16px, 6vw, 72px);
   opacity: 0;
   transform-origin: center;
   transition: opacity 0.8s ease;
@@ -196,20 +208,24 @@ img {
 
 .keyTextLine {
   margin: 0;
+  display: block; /* keep 3 lines even on wide screens */
+  white-space: nowrap;
   font-weight: 800;
   letter-spacing: 0.14em;
   line-height: 1.2;
 }
 
 .keyTextLine--lg {
-  font-size: clamp(26px, 6.2vw, 44px);
+  /* mostly fixed, slight responsive adjustment */
+  font-size: clamp(28px, 2.2rem + 0.6vw, 44px);
 }
 
 .keyTextLine--md {
-  margin-top: 10px;
-  font-size: clamp(14px, 3.2vw, 18px);
+  margin-top: 12px;
+  /* keep contrast, but make it more readable */
+  font-size: clamp(20px, 1.55rem + 0.35vw, 28px);
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
 }
 
 .snsLinks {
@@ -218,7 +234,7 @@ img {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 18px;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -228,15 +244,15 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   border-radius: 999px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
 .snsLink img {
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
   filter: drop-shadow(0 2px 8px var(--shadowLight));
 }

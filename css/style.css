@@ -115,7 +115,7 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../assets/texture.png");
+  background-image: url("../assets/texture2.png");
   background-repeat: repeat;
   opacity: var(--textureOpacity);
   mix-blend-mode: screen;

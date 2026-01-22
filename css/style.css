@@ -39,8 +39,8 @@ img {
   background: var(--yellow);
   display: grid;
   place-items: center;
+  isolation: isolate; /* contain blend mode inside splash */
   z-index: 10;
-  isolation: isolate; /* contain blend modes within splash */
   opacity: 1;
   transition: opacity 0.8s ease;
 }
@@ -65,8 +65,6 @@ img {
   width: min(520px, 68vw);
   max-height: 32vh;
   object-fit: contain;
-  position: relative;
-  z-index: 1;
 }
 
 /* Main */
@@ -179,7 +177,7 @@ img {
   letter-spacing: 0.18em;
   font-size: clamp(14px, 2.6vw, 18px);
   text-shadow: 0 2px 10px var(--shadowLight);
-  background: rgba(255, 255, 255, 0.9);
+  background: #d76f9c;
   padding: 10px 14px;
   border-radius: 12px;
   opacity: 0;
@@ -211,8 +209,8 @@ img {
 }
 
 .snsLink img {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   filter: drop-shadow(0 2px 8px var(--shadowLight));
 }

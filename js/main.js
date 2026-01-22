@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const logo = document.querySelector(".logo");
   const keyVisual = document.querySelector(".keyVisual");
-  const releaseDate = document.querySelector(".releaseDate");
+  const keyText = document.querySelector(".keyText");
   const snsLinks = document.querySelector(".snsLinks");
 
   const SPLASH_MS = 1500;
-  const STAGGER_MS = { logo: 250, key: 520, date: 820, sns: 980 };
+  const STAGGER_MS = { logo: 250, key: 520, text: 820, sns: 980 };
 
   const revealMain = () => {
     splash?.classList.add("isHidden");
@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
       STAGGER_MS.key
     );
     window.setTimeout(
-      () => releaseDate?.classList.add("isVisible"),
-      STAGGER_MS.date
+      () => keyText?.classList.add("isVisible"),
+      STAGGER_MS.text
     );
     window.setTimeout(
       () => snsLinks?.classList.add("isVisible"),

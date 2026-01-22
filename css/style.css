@@ -143,17 +143,14 @@ img {
   justify-content: center;
 }
 
+.center {
+  position: relative;
+}
+
 .bottom {
   flex-direction: column;
   align-items: center;
   gap: 14px;
-}
-
-.releaseBlock {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
 }
 
 .logo {
@@ -174,20 +171,42 @@ img {
   transition: opacity 1s ease, transform 1s ease;
 }
 
-.releaseDate {
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  font-size: clamp(14px, 2.6vw, 18px);
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-  background: rgba(215, 111, 156, 0.85);
-  padding: 10px 14px;
-  border-radius: 12px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+/* Key visual overlay text */
+.keyVisualWrap {
+  position: relative;
+  display: inline-block;
+}
+
+.keyText {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(16px, 8vh, 72px);
+  transform: translateX(-50%);
   text-align: center;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.keyTextLine {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+}
+
+.keyTextLine--lg {
+  font-size: clamp(26px, 6.2vw, 44px);
+}
+
+.keyTextLine--md {
+  margin-top: 10px;
+  font-size: clamp(14px, 3.2vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.22em;
 }
 
 .snsLinks {
@@ -239,9 +258,8 @@ img {
   transform: scale(1);
 }
 
-.releaseDate.isVisible {
+.keyText.isVisible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .snsLinks.isVisible {
@@ -251,8 +269,12 @@ img {
 
 /* Small tweaks */
 @media (max-width: 480px) {
-  .releaseDate {
+  .keyTextLine {
     letter-spacing: 0.12em;
+  }
+
+  .keyTextLine--md {
+    letter-spacing: 0.16em;
   }
 }
 

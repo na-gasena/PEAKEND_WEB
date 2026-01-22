@@ -13,9 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const logo = document.querySelector(".logo");
   const keyVisual = document.querySelector(".keyVisual");
   const releaseDate = document.querySelector(".releaseDate");
+  const snsLinks = document.querySelector(".snsLinks");
 
   const SPLASH_MS = 1500;
-  const STAGGER_MS = { logo: 250, key: 520, date: 820 };
+  const STAGGER_MS = { logo: 250, key: 520, date: 820, sns: 980 };
 
   const revealMain = () => {
     splash?.classList.add("isHidden");
@@ -29,6 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.setTimeout(
       () => releaseDate?.classList.add("isVisible"),
       STAGGER_MS.date
+    );
+    window.setTimeout(
+      () => snsLinks?.classList.add("isVisible"),
+      STAGGER_MS.sns
     );
 
     // Remove splash from a11y tree after animation

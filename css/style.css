@@ -61,6 +61,7 @@ img {
   height: 100%;
   opacity: 0;
   transition: opacity 0.8s ease;
+  isolation: isolate; /* contain blend modes within the app */
 }
 
 #app.isVisible {
@@ -101,6 +102,7 @@ img {
   background-image: url("../assets/texture.png");
   background-repeat: repeat;
   opacity: var(--textureOpacity);
+  mix-blend-mode: screen;
   pointer-events: none;
 }
 

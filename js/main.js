@@ -70,11 +70,40 @@ document.addEventListener("DOMContentLoaded", () => {
   window.setTimeout(revealMain, SPLASH_MS);
 
   // Photo modal
-  const openModal = (imgSrc, caption) => {
+  const renderCaption = (caption) => {
+    if (!modalCaption) return;
+    if (!caption) {
+      modalCaption.textContent = "";
+      return;
+    }
+
+    const escaped = caption
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    const withLinks = escaped.replace(
+      /(https?:\/\/[^\s<]+)/g,
+      '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+    );
+    modalCaption.innerHTML = withLinks.replace(/\n/g, "<br>");
+  };
+
+  const openModal = (imgSrc, caption, options = {}) => {
     if (!modal || !modalImg || !modalCaption) return;
+    const { theme, size } = options;
+    if (theme) {
+      modal.dataset.theme = theme;
+    } else {
+      delete modal.dataset.theme;
+    }
+    if (size) {
+      modal.dataset.size = size;
+    } else {
+      delete modal.dataset.size;
+    }
     modalImg.src = imgSrc;
     modalImg.alt = "";
-    modalCaption.textContent = caption ?? "";
+    renderCaption(caption ?? "");
     modal.hidden = false;
     document.body.classList.add("modalOpen");
   };
@@ -83,12 +112,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!modal || !modalImg) return;
     modal.hidden = true;
     modalImg.src = "";
+    delete modal.dataset.theme;
+    delete modal.dataset.size;
     document.body.classList.remove("modalOpen");
   };
 
   document.addEventListener("click", (e) => {
     const t = e.target;
     if (!(t instanceof Element)) return;
+
+    const modalItem = t.closest("[data-modal-img]");
+    if (modalItem) {
+      const imgSrc = modalItem.getAttribute("data-modal-img");
+      const caption = modalItem.getAttribute("data-modal-caption");
+      const theme = modalItem.getAttribute("data-modal-theme");
+      const size = modalItem.getAttribute("data-modal-size");
+      if (imgSrc) openModal(imgSrc, caption, { theme, size });
+      return;
+    }
 
     const item = t.closest(".photoItem");
     if (item) {

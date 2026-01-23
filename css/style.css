@@ -254,17 +254,21 @@ img {
 }
 
 .logo {
-  width: min(320px, 70vw);
+  width: min(420px, 85vw);
   filter: drop-shadow(0 2px 8px var(--shadowLight));
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+.modalTrigger {
+  cursor: pointer;
+}
+
 /* Make header logo larger on wide screens */
 @media (min-width: 900px) {
   .logo {
-    width: min(520px, 36vw);
+    width: min(600px, 44vw);
   }
 }
 
@@ -413,6 +417,10 @@ img {
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
 }
 
+.modal[data-theme="logo"] .modalPanel {
+  background: #e1cb3a;
+}
+
 .modalClose {
   position: sticky;
   top: 0;
@@ -431,11 +439,28 @@ img {
   border-radius: 10px;
 }
 
+.modal[data-size="compact"] .modalImage {
+  max-width: min(86vw, 720px);
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
 .modalCaption {
   margin: 12px 6px 6px;
   white-space: pre-line;
   line-height: 1.6;
   font-weight: 700;
+}
+
+.modal[data-theme="logo"] .modalCaption {
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 0.85),
+    0 1px 2px rgba(0, 0, 0, 0.55);
 }
 
 /* Mobile: allow scroll + photos appear below */

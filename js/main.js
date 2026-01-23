@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const keyText = document.querySelector(".keyText");
   const snsLinks = document.querySelector(".snsLinks");
 
+  const modal = document.getElementById("photoModal");
+  const modalImg = modal?.querySelector(".modalImage");
+  const modalCaption = modal?.querySelector(".modalCaption");
+
   const SPLASH_MS = 1500;
   const STAGGER_MS = { logo: 250, key: 520, text: 820, sns: 980 };
 
@@ -50,5 +54,43 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (_) {}
 
   window.setTimeout(revealMain, SPLASH_MS);
+
+  // Photo modal
+  const openModal = (imgSrc, caption) => {
+    if (!modal || !modalImg || !modalCaption) return;
+    modalImg.src = imgSrc;
+    modalImg.alt = "";
+    modalCaption.textContent = caption ?? "";
+    modal.hidden = false;
+    document.body.classList.add("modalOpen");
+  };
+
+  const closeModal = () => {
+    if (!modal || !modalImg) return;
+    modal.hidden = true;
+    modalImg.src = "";
+    document.body.classList.remove("modalOpen");
+  };
+
+  document.addEventListener("click", (e) => {
+    const t = e.target;
+    if (!(t instanceof Element)) return;
+
+    const item = t.closest(".photoItem");
+    if (item) {
+      const imgSrc = item.getAttribute("data-img");
+      const caption = item.getAttribute("data-caption");
+      if (imgSrc) openModal(imgSrc, caption);
+      return;
+    }
+
+    if (t.closest('[data-close="1"]')) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.hidden) closeModal();
+  });
 });
 

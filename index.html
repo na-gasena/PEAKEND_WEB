@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Shippori+Mincho+B1:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
@@ -46,9 +46,11 @@
           <div class="keyVisualWrap">
             <img class="keyVisual" src="./assets/SolaRin_Only.png" alt="" />
             <div class="keyText" aria-label="release">
-              <p class="keyTextLine keyTextLine--lg">2026年 夏</p>
-              <p class="keyTextLine keyTextLine--md">東京・京都などにて</p>
-              <p class="keyTextLine keyTextLine--lg">配給上映決定！</p>
+              <p class="keyTextLine keyTextLine--lg">2026年　夏</p>
+              <p class="keyTextLine keyTextLine--md">
+                東京(シアター・イメージフォーラム) / 京都などにて
+              </p>
+              <p class="keyTextLine keyTextLine--lg">上映決定！</p>
             </div>
           </div>
         </section>
@@ -88,7 +90,68 @@
           </nav>
         </footer>
       </div>
+
+      <!-- Photo collage (PC: sides / Mobile: below after scroll) -->
+      <div class="photoCollage" aria-label="photos">
+        <button
+          class="photoItem photoItem--1"
+          type="button"
+          data-img="./assets/img/img1.jpg"
+          data-caption="𝐡𝐞𝐥𝐦𝐞𝐭 𝐠𝐢𝐫𝐥👧"
+          aria-label="photo 1"
+        >
+          <img src="./assets/img/img1.jpg" alt="" loading="lazy" />
+        </button>
+        <button
+          class="photoItem photoItem--2"
+          type="button"
+          data-img="./assets/img/img2.jpg"
+          data-caption="🦕リン&そら🦖"
+          aria-label="photo 2"
+        >
+          <img src="./assets/img/img2.jpg" alt="" loading="lazy" />
+        </button>
+        <button
+          class="photoItem photoItem--3"
+          type="button"
+          data-img="./assets/img/img3.jpg"
+          data-caption="京都の夏は非常に暑い!!💥"
+          aria-label="photo 3"
+        >
+          <img src="./assets/img/img3.jpg" alt="" loading="lazy" />
+        </button>
+        <button
+          class="photoItem photoItem--4"
+          type="button"
+          data-img="./assets/img/img4.jpg"
+          data-caption="風船との移動🚌"
+          aria-label="photo 4"
+        >
+          <img src="./assets/img/img4.jpg" alt="" loading="lazy" />
+        </button>
+        <button
+          class="photoItem photoItem--5"
+          type="button"
+          data-img="./assets/img/img5.jpg"
+          data-caption="あなたにみえている世界と&#10;私のみている世界は&#10;確かに交わっている&#10;でもあなたのみている世界を&#10;私はみることが出来ない&#10;私がみている世界を&#10;あなたが見ることもできない"
+          aria-label="photo 5"
+        >
+          <img src="./assets/img/img5.jpg" alt="" loading="lazy" />
+        </button>
+      </div>
     </main>
+
+    <!-- Photo modal -->
+    <div id="photoModal" class="modal" role="dialog" aria-modal="true" hidden>
+      <div class="modalBackdrop" data-close="1" aria-hidden="true"></div>
+      <div class="modalPanel" role="document" aria-label="photo detail">
+        <button class="modalClose" type="button" data-close="1" aria-label="close">
+          ✕
+        </button>
+        <img class="modalImage" alt="" />
+        <p class="modalCaption"></p>
+      </div>
+    </div>
 
     <script src="./js/main.js"></script>
   </body>

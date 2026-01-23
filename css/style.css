@@ -304,6 +304,14 @@ img {
   pointer-events: none;
 }
 
+.keyTelop {
+  width: min(760px, 92vw);
+  max-height: 34vh;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.35));
+}
+
 .keyTextLine {
   margin: 0;
   display: block; /* keep 3 lines even on wide screens */

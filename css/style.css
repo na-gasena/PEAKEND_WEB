@@ -173,6 +173,14 @@ img {
   transform: rotate(6deg);
 }
 
+.photoItem--6 {
+  left: 7vw;
+  top: 46vh;
+  width: min(280px, 23vw);
+  height: min(180px, 15vw);
+  transform: rotate(2deg);
+}
+
 /* Right side */
 .photoItem--3 {
   right: 6vw;

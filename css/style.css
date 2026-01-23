@@ -297,12 +297,15 @@ img {
 
 .keyTextLine--md {
   margin-top: 12px;
-  /* allow wrapping on narrow screens */
   max-width: min(92vw, 760px);
   font-size: clamp(16px, 1.15rem + 0.25vw, 22px);
   font-weight: 700;
   letter-spacing: 0.08em;
-  white-space: normal;
+  white-space: nowrap;
+}
+
+.keyTextLine--md2 {
+  margin-top: 6px;
 }
 
 .snsLinks {

@@ -131,7 +131,8 @@ img {
 .photoCollage {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  /* above transparent #content so clicks work on desktop */
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -158,9 +159,9 @@ img {
 /* Left side */
 .photoItem--1 {
   left: 5vw;
-  top: 18vh;
-  width: min(260px, 22vw);
-  height: min(170px, 14vw);
+  top: 16vh;
+  width: min(340px, 28vw);
+  height: min(220px, 18vw);
   transform: rotate(-6deg);
 }
 

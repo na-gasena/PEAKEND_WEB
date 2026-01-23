@@ -50,6 +50,14 @@
 
     <!-- メイン画面 -->
     <main id="app" aria-label="main">
+      <!-- Fallback image (shown if video can't play) -->
+      <img
+        id="bgFallback"
+        src="./assets/img/fallback_img.jpg"
+        alt=""
+        aria-hidden="true"
+      />
+
       <!-- 背景動画 -->
       <video
         id="bgVideo"
@@ -58,6 +66,7 @@
         loop
         playsinline
         preload="auto"
+        poster="./assets/img/fallback_img.jpg"
         aria-hidden="true"
       >
         <source src="./assets/BackPlayVideo.mp4" type="video/mp4" />

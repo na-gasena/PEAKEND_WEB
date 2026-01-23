@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const splash = document.getElementById("splash");
   const app = document.getElementById("app");
   const bgVideo = document.getElementById("bgVideo");
+  const bgFallback = document.getElementById("bgFallback");
 
   const logo = document.querySelector(".logo");
   const keyVisual = document.querySelector(".keyVisual");
@@ -50,8 +51,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Even if play is blocked, the rest of UI still works.
   try {
     const p = bgVideo?.play?.();
-    if (p && typeof p.catch === "function") p.catch(() => {});
+    if (p && typeof p.catch === "function") {
+      p.catch(() => {
+        // Autoplay blocked / can't play → keep fallback visible
+      });
+    }
   } catch (_) {}
+
+  // Hide fallback once the video is actually playing
+  if (bgVideo && bgFallback) {
+    const hideFallback = () => bgFallback.classList.add("isHidden");
+    const showFallback = () => bgFallback.classList.remove("isHidden");
+    bgVideo.addEventListener("playing", hideFallback, { passive: true });
+    bgVideo.addEventListener("canplay", hideFallback, { passive: true });
+    bgVideo.addEventListener("error", showFallback, { passive: true });
+  }
 
   window.setTimeout(revealMain, SPLASH_MS);
 

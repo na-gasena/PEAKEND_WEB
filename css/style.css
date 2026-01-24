@@ -409,6 +409,7 @@ img {
 .modalPanel {
   position: relative;
   width: min(920px, 92vw);
+  max-width: 100%;
   max-height: min(calc(100svh - 8vh), 820px);
   margin: 4vh auto;
   background: rgba(255, 255, 255, 0.92);
@@ -456,10 +457,13 @@ img {
   font-weight: 700;
   overflow-wrap: anywhere;
   word-break: break-word;
+  overflow-x: hidden;
 }
 
 .modalCaption a {
   word-break: break-all;
+  display: inline-block;
+  max-width: 100%;
 }
 
 .modal[data-theme="logo"] .modalCaption {
@@ -469,13 +473,6 @@ img {
   text-shadow:
     0 0 2px rgba(0, 0, 0, 0.85),
     0 1px 2px rgba(0, 0, 0, 0.55);
-}
-
-.behindScene {
-  display: none;
-  margin: 12px 0 0;
-  font-weight: 700;
-  letter-spacing: 0.08em;
 }
 
 /* Mobile: allow scroll + photos appear below */
@@ -492,14 +489,6 @@ img {
   #content {
     height: auto;
     min-height: 100vh;
-  }
-
-  .behindScene {
-    display: block;
-    text-align: center;
-    font-size: clamp(26px, 1rem + 0.4vw, 20px);
-    color: #fff;
-    margin: 50px 0 -29px;
   }
 
   .photoCollage {
@@ -557,7 +546,6 @@ img {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 /* Small tweaks */
 @media (max-width: 480px) {
